@@ -1,0 +1,22 @@
+{
+    "name": "jeyofdev/helper-manipulate-array",
+    "description": "A simple class that allows to manipulate array",
+    "keywords": ["php", "array", "manip", "php"],
+    "authors": [
+        {
+            "name": "jeyofdev",
+            "email": "jgregoire.pro@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "filp/whoops": "^2.5",
+        "symfony/var-dumper": "^4.3",
+        "phpunit/phpunit": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Helper\\ManipulateArray\\": "src/"
+        }
+    }
+}
