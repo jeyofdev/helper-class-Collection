@@ -12,11 +12,13 @@
 
     // Run the methods of Class 'Collection'
     $list = new jeyofdev\Helper\ManipulateArray\Collection([
-        ["name" => "Jean", "language" => "php", "country" => "us"],
-        ["name" => "Marc", "language" => "javascript", "country" => "en"],
-        ["name" => "Emily", "language" => "python", "country" => "fr"]
+        ["name" => "Jean", "language" => "php", "note" => "11"],
+        ["name" => "Marc", "language" => "javascript", "note" => "15"],
+        ["name" => "Emily", "language" => "python", "note" => "13"]
     ]);
 
-    dump($list->lists("name", "language"));
-    dump($list->extract("language"));
-    dump($list->extract("language")->join(", "));
+    dump($list->extract("note")->max());
+    dump($list->max("note"));
+
+    dump($list->extract("note")->min());
+    dump($list->min("note"));

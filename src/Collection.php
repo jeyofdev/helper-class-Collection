@@ -138,6 +138,42 @@
 
 
         /**
+         * Extract the minimum value from an array
+         *
+         * @param mixed $key
+         * @return integer|null
+         */
+        public function min($key = false) : ?int
+        {
+            if($key){
+                return $this->extract($key)->min();
+            } 
+            else {
+                return min($this->datas);
+            }
+        }
+
+
+
+        /**
+         * Extract the maximum value from an array
+         *
+         * @param mixed $key
+         * @return integer|null
+         */
+        public function max($key = false) : ?int
+        {
+            if($key){
+                return $this->extract($key)->max();
+            } 
+            else {
+                return max($this->datas);
+            }
+        }
+
+
+
+        /**
          * Check if an offset exists
          *
          * @param mixed $offset

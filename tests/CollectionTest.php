@@ -204,5 +204,45 @@
                 
             $this->assertEquals("php, javascript, python", $datas);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testExtractMinimumValue() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $syntaxOne = $this->collection->extract("note")->min();
+            $syntaxTwo = $this->collection->min("note");
+
+            $this->assertEquals(11, $syntaxOne);
+            $this->assertEquals(11, $syntaxTwo);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testExtractMaximumValue() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $syntaxOne = $this->collection->extract("note")->max();
+            $syntaxTwo = $this->collection->max("note");
+
+            $this->assertEquals(15, $syntaxOne);
+            $this->assertEquals(15, $syntaxTwo);
+        }
     }
 
