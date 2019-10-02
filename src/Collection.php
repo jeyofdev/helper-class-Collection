@@ -17,7 +17,7 @@
         /**
          * @var array
          */
-        private $datas;
+        public $datas;
 
 
 
@@ -127,9 +127,13 @@
          *
          * @return string|null
          */
-        public function join(string $glue) : ?string
+        public function join(string $glue, array $datas = []) : ?string
         {
-            return implode($glue, $this->datas);
+            if (empty($datas)) {
+                $datas = $this->datas;
+            }
+
+            return implode($glue, $datas);
         }
 
 
@@ -144,8 +148,7 @@
         {
             if($key){
                 return $this->extract($key)->min();
-            } 
-            else {
+            } else {
                 return min($this->datas);
             }
         }
@@ -162,10 +165,47 @@
         {
             if($key){
                 return $this->extract($key)->max();
-            } 
-            else {
+            } else {
                 return max($this->datas);
             }
+        }
+
+
+
+        /**
+         * Sort an array alphabetically
+         *
+         * @return string|null
+         */
+        public function sort($key = false) : ?string
+        {
+            if($key){
+                $array = $this->extract($key)->getDatas();
+            } else {
+                $array = $this->datas;
+            }
+            sort($array);
+
+            return $this->join(", ", $array);
+        }
+
+
+
+        /**
+         * Sort an array by reverse alphabetical order
+         *
+         * @return string|null
+         */
+        public function rsort($key = false) : ?string
+        {
+            if($key){
+                $array = $this->extract($key)->getDatas();
+            } else {
+                $array = $this->datas;
+            }
+            rsort($array);
+
+            return $this->join(", ", $array);
         }
 
 

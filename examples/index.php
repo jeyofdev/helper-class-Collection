@@ -17,6 +17,5 @@
         ["name" => "Emily", "language" => "python", "note" => "13"]
     ]);
 
-    dump($list->get("0.name"));
-    dump($list->get("2.name"));
-    dump($list->get("2")->get("name"));
+    dump($list->sort("name"));
+    dump($list->extract("name")->rsort());

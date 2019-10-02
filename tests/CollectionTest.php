@@ -264,5 +264,45 @@
             $this->assertEquals(15, $syntaxOne);
             $this->assertEquals(15, $syntaxTwo);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testSortAnArrayAlphabetically() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $syntaxOne = $this->collection->extract("name")->sort();
+            $syntaxTwo = $this->collection->sort("name");
+
+            $this->assertEquals("Emily, Jean, Marc", $syntaxOne);
+            $this->assertEquals("Emily, Jean, Marc", $syntaxTwo);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testSortAnArrayByreverseAlphabeticalOrder() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $syntaxOne = $this->collection->extract("name")->rsort();
+            $syntaxTwo = $this->collection->rsort("name");
+
+            $this->assertEquals("Marc, Jean, Emily", $syntaxOne);
+            $this->assertEquals("Marc, Jean, Emily", $syntaxTwo);
+        }
     }
 
