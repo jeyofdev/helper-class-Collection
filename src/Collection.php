@@ -36,13 +36,10 @@
          *
          * @return string|null
          */
-        public function get (string $key) : ?string
+        public function get (string $key)
         {
-            if ($this->has($key)) {
-                return $this->datas[$key];
-            } else {
-                throw new Exception("The key '$key' does not exist in the array");
-            }
+            $index = explode(".", $key);
+            return $this->getValue($index, $this->datas);
         }
 
 
@@ -236,5 +233,32 @@
         public function getIterator() : ArrayIterator
         {
             return new ArrayIterator($this->datas);
+        }
+
+
+
+        /**
+         * Get the value of a index
+         *
+         * @return void
+         */
+        private function getValue(array $indexes, $value)
+        {
+            $key = array_shift($indexes);
+
+            if(empty($indexes)){
+                if(!array_key_exists($key, $value)) {
+                    throw new Exception("The key '$key' does not exist in the array");
+                }
+                if(is_array($value[$key])){
+                    return new Collection($value[$key]);
+                }
+                else{
+                    return $value[$key];
+                }
+            }
+            else{
+                return $this->getValue($indexes, $value[$key]);
+            }
         }
     }

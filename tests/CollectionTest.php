@@ -69,6 +69,26 @@
         /**
          * @test
          */
+        public function testGetValueOfIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php", "note" => "11"],
+                ["name" => "Marc", "language" => "javascript", "note" => "15"],
+                ["name" => "Emily", "language" => "python", "note" => "13"]
+            ]);
+
+            $syntaxOne = $this->collection->get("0.language");
+            $syntaxTwo = $this->collection->get("2")->get("language");
+
+            $this->assertEquals("php", $syntaxOne);
+            $this->assertEquals("python", $syntaxTwo);
+        }
+
+
+
+        /**
+         * @test
+         */
         public function testGetValueOfAnIndex() : void
         {
             $this->collection = $this->getCollection();

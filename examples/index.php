@@ -17,8 +17,6 @@
         ["name" => "Emily", "language" => "python", "note" => "13"]
     ]);
 
-    dump($list->extract("note")->max());
-    dump($list->max("note"));
-
-    dump($list->extract("note")->min());
-    dump($list->min("note"));
+    dump($list->get("0.name"));
+    dump($list->get("2.name"));
+    dump($list->get("2")->get("name"));
