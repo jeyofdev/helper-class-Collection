@@ -10,4 +10,14 @@
     $whoops->register();
 
 
+    // Run the methods of Class 'Collection'
     $post = new jeyofdev\Helper\ManipulateArray\Collection($_POST);
+
+    $post
+        ->set("username", "john")
+        ->set("job", "dev");
+    
+    $datas = $post->getDatas();
+    $name = $post->get("username");
+
+    dd($datas, $name);
