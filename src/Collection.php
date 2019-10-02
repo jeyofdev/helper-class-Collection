@@ -4,13 +4,15 @@
 
 
     use ArrayAccess;
+    use ArrayIterator;
     use Exception;
+    use IteratorAggregate;
 
 
     /**
      * @author jeyofdev <jgregoire.pro@gmail.com>
      */
-    class Collection implements ArrayAccess
+    class Collection implements ArrayAccess, IteratorAggregate
     {
         /**
          * @var array
@@ -135,5 +137,17 @@
             if($this->has($offset)){
                 unset($this->datas[$offset]);
             }
+        }
+
+
+
+        /**
+         * Create an external Iterator
+         *
+         * @return ArrayIterator
+         */
+        public function getIterator() : ArrayIterator
+        {
+            return new ArrayIterator($this->datas);
         }
     }

@@ -11,7 +11,7 @@
 
 
     // Run the methods of Class 'Collection'
-    $post = new jeyofdev\Helper\ManipulateArray\Collection($_POST);
-
-    $post["name"] = "jean";
-    dd($post["name"]);
+    $post = new jeyofdev\Helper\ManipulateArray\Collection(["john", "maria", "chris"]);
+    foreach ($post as $k => $v) {
+        dump("$k = $v");
+    }

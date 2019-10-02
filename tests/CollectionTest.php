@@ -127,5 +127,23 @@
 
             $this->assertEquals("john", $this->datas["username"]);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testForeachOnObjet() : void
+        {
+            $this->collection = $this->getCollection(["john", "maria", "chris"]);
+            
+            $datas = [];
+            foreach ($this->datas as $k => $v) {
+                $datas[] = "$k = $v";
+            }
+            $datas = implode(", ", $datas);
+
+            $this->assertEquals("0 = john, 1 = maria, 2 = chris", $datas);
+        }
     }
 
