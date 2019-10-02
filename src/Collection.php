@@ -3,6 +3,7 @@
     namespace jeyofdev\Helper\ManipulateArray;
 
 
+    use ArrayAccess;
     use Exception;
 
 
@@ -35,7 +36,7 @@
          */
         public function get (string $key) : ?string
         {
-            if(array_key_exists($key, $this->datas)){
+            if ($this->has($key)) {
                 return $this->datas[$key];
             } else {
                 throw new Exception("The key '$key' does not exist in the array");
@@ -47,9 +48,10 @@
         /**
          * Set the value of a given index
          * 
+         * @param mixed $value
          * @return self
          */
-        public function set ($key, $value) : self
+        public function set (string $key, $value) : self
         {
             $this->datas[$key] = $value;
             return $this;
@@ -65,5 +67,18 @@
         public function getDatas () : array
         {
             return $this->datas;
+        }
+
+
+
+
+        /**
+         * Checks if the given index exists
+         *
+         * @return boolean
+         */
+        public function has(string $key) : bool
+        {
+            return array_key_exists($key, $this->datas);
         }
     }

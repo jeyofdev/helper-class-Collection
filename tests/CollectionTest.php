@@ -80,5 +80,39 @@
 
             $this->assertEquals("dev", $username);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testIfIndexExist() : void
+        {
+            $this->collection = $this->getCollection();
+            $this->datas = $this->collection
+                ->set("username", "john")
+                ->set("job", "dev");
+
+            $exist = $this->collection->has("username");
+
+            $this->assertNotFalse($exist);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testIfIndexNotExist() : void
+        {
+            $this->collection = $this->getCollection();
+            $this->datas = $this->collection
+                ->set("username", "john")
+                ->set("job", "dev");
+
+            $exist = $this->collection->has("lastname");
+
+            $this->assertFalse($exist);
+        }
     }
 

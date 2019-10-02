@@ -19,5 +19,6 @@
     
     $datas = $post->getDatas();
     $name = $post->get("username");
+    $exist = $post->has("username");
 
-    dd($datas, $name);
+    dd($datas, $name, $exist);
