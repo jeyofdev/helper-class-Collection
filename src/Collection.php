@@ -87,6 +87,57 @@
 
 
         /**
+         * Extract data from an array and add the index and its value in a new array
+         *
+         * @param mixed $key
+         * @param mixed $value
+         * @return Collection
+         */
+        public function lists($key, $value) : Collection
+        {
+            $results = [];
+
+            foreach($this->datas as $item){
+                $results[$item[$key]] = $item[$value];
+            }
+
+            return new Collection($results);
+        }
+
+
+
+        /**
+         * Extract data from an array and add it in a new array
+         *
+         * @param mixed $key
+         * @return Collection
+         */
+        public function extract($key) : Collection
+        {
+            $results = [];
+
+            foreach($this->datas as $item){
+                $results[] = $item[$key];
+            }
+
+            return new Collection($results);
+        }
+
+
+
+        /**
+         * Join array values in a string
+         *
+         * @return string|null
+         */
+        public function join(string $glue) : ?string
+        {
+            return implode($glue, $this->datas);
+        }
+
+
+
+        /**
          * Check if an offset exists
          *
          * @param mixed $offset

@@ -11,7 +11,12 @@
 
 
     // Run the methods of Class 'Collection'
-    $post = new jeyofdev\Helper\ManipulateArray\Collection(["john", "maria", "chris"]);
-    foreach ($post as $k => $v) {
-        dump("$k = $v");
-    }
+    $list = new jeyofdev\Helper\ManipulateArray\Collection([
+        ["name" => "Jean", "language" => "php", "country" => "us"],
+        ["name" => "Marc", "language" => "javascript", "country" => "en"],
+        ["name" => "Emily", "language" => "python", "country" => "fr"]
+    ]);
+
+    dump($list->lists("name", "language"));
+    dump($list->extract("language"));
+    dump($list->extract("language")->join(", "));

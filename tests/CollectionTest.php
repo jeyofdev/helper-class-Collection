@@ -145,5 +145,64 @@
 
             $this->assertEquals("0 = john, 1 = maria, 2 = chris", $datas);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testExtractDatas() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php"],
+                ["name" => "Marc", "language" => "javascript"],
+                ["name" => "Emily", "language" => "python"]
+            ]);
+            
+            $datas = $this->collection->extract("language");
+                
+            $this->assertContains("php", $datas);
+            $this->assertContains("python", $datas);
+            $this->assertNotContains("html", $datas);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testExtractDataAndAddIndexAndValueInNewArray() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php"],
+                ["name" => "Marc", "language" => "javascript"],
+                ["name" => "Emily", "language" => "python"]
+            ]);
+            
+            $datas = $this->collection->lists("name", "language");
+            
+            $this->assertArrayHasKey("Jean", $datas);
+            $this->assertContains("php", $datas);
+            $this->assertArrayNotHasKey("Bob", $datas);
+            $this->assertNotContains("html", $datas);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testImplodeDatas() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php"],
+                ["name" => "Marc", "language" => "javascript"],
+                ["name" => "Emily", "language" => "python"]
+            ]);
+            
+            $datas = $this->collection->extract("language")->join(", ");
+                
+            $this->assertEquals("php, javascript, python", $datas);
+        }
     }
 
