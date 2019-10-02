@@ -13,12 +13,5 @@
     // Run the methods of Class 'Collection'
     $post = new jeyofdev\Helper\ManipulateArray\Collection($_POST);
 
-    $post
-        ->set("username", "john")
-        ->set("job", "dev");
-    
-    $datas = $post->getDatas();
-    $name = $post->get("username");
-    $exist = $post->has("username");
-
-    dd($datas, $name, $exist);
+    $post["name"] = "jean";
+    dd($post["name"]);

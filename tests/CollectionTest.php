@@ -114,5 +114,18 @@
 
             $this->assertFalse($exist);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testUseObjetAsArray() : void
+        {
+            $this->collection = $this->getCollection();
+            $this->datas["username"] = "john";
+
+            $this->assertEquals("john", $this->datas["username"]);
+        }
     }
 
