@@ -179,7 +179,7 @@
         /**
          * @test
          */
-        public function testIfIndexExist() : void
+        public function testCheckIfIndexExist() : void
         {
             $this->collection = $this->getCollection();
             $this->datas = $this->collection
@@ -189,6 +189,26 @@
             $exist = $this->collection->has("username");
 
             $this->assertNotFalse($exist);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testCheckIfValueExist() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $true = $this->collection->extract("name")->exist("Jean");
+            $false = $this->collection->extract("name")->exist("Maria");
+
+            $this->assertNotFalse($true);
+            $this->assertFalse($false);
         }
 
 

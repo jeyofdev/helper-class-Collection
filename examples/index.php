@@ -19,5 +19,5 @@
 
     dump($list->extract("name"));
 
-    dump($list->extract("name")->add("start", "John", "Maria"));
-    dump($list->extract("name")->add("end", "John", "Maria"));
+    dump($list->extract("name")->exist("Marc"));
+    dump($list->extract("name")->exist("Maria"));

@@ -130,6 +130,19 @@
 
 
         /**
+         * Check if a given value exists
+         *
+         * @param mixed $value
+         * @return boolean
+         */
+        public function exist ($value) : bool
+        {
+            return in_array($value, $this->datas);
+        }
+
+
+
+        /**
          * Extract data from an array and add the index and its value in a new array
          *
          * @param mixed $key
