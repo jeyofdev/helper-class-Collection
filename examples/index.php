@@ -17,7 +17,10 @@
         ["name" => "Emily", "language" => "python", "note" => "13"]
     ]);
 
-    dump($list->extract("name"));
+    $datas = $list->extract("name");
 
-    dump($list->extract("name")->exist("Marc"));
-    dump($list->extract("name")->exist("Maria"));
+    function toUpper ($datas) {
+        return strtoupper($datas);
+    }
+
+    dump($datas->map("toUpper"));

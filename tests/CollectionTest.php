@@ -489,5 +489,27 @@
             $this->assertEquals(["John", "Maria", "Jean", "Marc", "Emily"], $start);
             $this->assertEquals(["Jean", "Marc", "Emily", "John", "Maria"], $end);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testExecuteFunctionOnValuesOfArray() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+
+            $datas = $this->collection->extract("name");
+            
+            $names = $this->collection->extract("name")->map(function ($datas) {
+                return strtoupper($datas);
+            });
+
+            $this->assertEquals(["JEAN", "MARC", "EMILY"], $names);
+        }
     }
 
