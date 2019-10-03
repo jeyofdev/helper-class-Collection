@@ -18,6 +18,5 @@
     ]);
 
     dump($list->get("0"));
-
-    dump($list->get("0")->firstKey());
-    dump($list->get("0")->lastKey());
+    dump($list->get("0")->keys("php"));
+    dump($list->extract("name")->keys("Marc"));

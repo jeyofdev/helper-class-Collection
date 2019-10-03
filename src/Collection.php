@@ -66,15 +66,15 @@
          * Get all indexes or a given index of an array
          *
          * @param string|null $value
-         * @return array
+         * @return mixed
          */
-        public function keys (?string $value = null) : array
+        public function keys (?string $value = null)
         {
             if (is_null($value)) {
                 return array_keys($this->datas);
             }
 
-            return array_keys($this->datas, $value);
+            return array_search($value, $this->datas);
         }
 
 

@@ -117,7 +117,7 @@
 
             $key = $this->collection->get("0")->keys("php");
 
-            $this->assertEquals(["language"], $key);
+            $this->assertEquals("language", $key);
         }
 
 
