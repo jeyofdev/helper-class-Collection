@@ -449,5 +449,25 @@
 
             $this->assertEquals(["Emily", "Marc", "Jean"], $datas);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testAddElementsToAnArray() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $start = $this->collection->extract("name")->add("start", "John", "Maria");
+            $end = $this->collection->extract("name")->add("end", "John", "Maria");
+
+            $this->assertEquals(["John", "Maria", "Jean", "Marc", "Emily"], $start);
+            $this->assertEquals(["Jean", "Marc", "Emily", "John", "Maria"], $end);
+        }
     }
 

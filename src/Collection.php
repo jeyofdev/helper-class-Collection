@@ -315,6 +315,25 @@
 
 
         /**
+         * Add elements to an array
+         *
+         * @return array
+         */
+        public function add (string $position, string ...$value) : array
+        {
+            if ($position === "start") {
+                return array_merge($value, $this->datas);
+            } else if ($position === "end") {
+                return array_merge($this->datas, $value);
+            } else {
+                $paramsAllowed = implode(" or ", ["start", "end"]);
+                throw new Exception("The value of the 1st parameter is not allowed. Its value is " . $paramsAllowed);
+            }
+        }
+
+
+
+        /**
          * Check if an offset exists
          *
          * @param mixed $offset

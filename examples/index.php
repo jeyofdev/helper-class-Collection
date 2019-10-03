@@ -18,7 +18,6 @@
     ]);
 
     dump($list->extract("name"));
-    dump($list->get("0"));
 
-    dump($list->extract("name")->reverse());
-    dump($list->get("0")->reverse());
+    dump($list->extract("name")->add("start", "John", "Maria"));
+    dump($list->extract("name")->add("end", "John", "Maria"));
