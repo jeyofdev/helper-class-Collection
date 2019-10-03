@@ -359,6 +359,18 @@
 
 
         /**
+         * Get the element number of an array
+         *
+         * @return integer
+         */
+        public function count () : int
+        {
+            return count($this->datas);
+        }
+
+
+
+        /**
          * Check if an offset exists
          *
          * @param mixed $offset

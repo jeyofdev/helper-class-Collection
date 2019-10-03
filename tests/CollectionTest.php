@@ -511,5 +511,23 @@
 
             $this->assertEquals(["JEAN", "MARC", "EMILY"], $names);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testCountElementsOfArray() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+
+            $count = $this->collection->extract("name")->count();
+
+            $this->assertEquals(3, $count);
+        }
     }
 

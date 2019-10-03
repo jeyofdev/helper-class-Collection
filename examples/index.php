@@ -17,10 +17,6 @@
         ["name" => "Emily", "language" => "python", "note" => "13"]
     ]);
 
-    $datas = $list->extract("name");
+    dump($list->extract("name"));
 
-    function toUpper ($datas) {
-        return strtoupper($datas);
-    }
-
-    dump($datas->map("toUpper"));
+    dump($list->extract("name")->count());
