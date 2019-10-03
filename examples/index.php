@@ -18,8 +18,7 @@
     ]);
 
     dump($list->extract("name"));
+    dump($list->get("0"));
 
-    dump($list->extract("name")->deleteFirst());
-    dump($list->extract("name")->deleteLast());
-    dump($list->extract("name")->delete("1"));
-    dump($list->extract("name")->delete("0", "1"));
+    dump($list->extract("name")->reverse());
+    dump($list->get("0")->reverse());

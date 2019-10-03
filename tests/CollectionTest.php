@@ -431,5 +431,23 @@
 
             $this->assertEquals(["Jean", "Marc"], $datas);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testReverseIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $datas = $this->collection->extract("name")->reverse();
+
+            $this->assertEquals(["Emily", "Marc", "Jean"], $datas);
+        }
     }
 

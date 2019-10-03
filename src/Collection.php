@@ -303,6 +303,18 @@
 
 
         /**
+         * Reverse the order of the elements of an array
+         *
+         * @return array
+         */
+        public function reverse () : array
+        {
+            return array_reverse($this->datas);
+        }
+
+
+
+        /**
          * Check if an offset exists
          *
          * @param mixed $offset
