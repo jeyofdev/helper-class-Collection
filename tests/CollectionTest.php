@@ -517,6 +517,28 @@
         /**
          * @test
          */
+        public function testFilterElementsOfArray() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 8],
+                ["name" => "Emily", "note" => 13]
+            ]);
+
+            $datas = $this->collection->extract("note");
+            
+            $average = $this->collection->extract("note")->filter(function ($datas) {
+                return ($datas >= 10) ? $datas : null;
+            });
+
+            $this->assertEquals(["0" => 11, "2" => 13], $average);
+        }
+
+
+
+        /**
+         * @test
+         */
         public function testCountElementsOfArray() : void
         {
             $this->collection = $this->getCollection([

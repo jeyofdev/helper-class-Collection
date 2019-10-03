@@ -347,13 +347,25 @@
 
 
         /**
-         * Execute a function on the values of an array
+         * Execute a callback on the values of an array
          *
          * @return array
          */
         public function map (callable $callback) : array
         {
             return array_map($callback, $this->datas);
+        }
+
+
+
+        /**
+         * Filter the elements of an array with a callback
+         * 
+         * @return array
+         */
+        public function filter (callable $callback) : array
+        {
+            return array_filter($this->datas, $callback);
         }
 
 
