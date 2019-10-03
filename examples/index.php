@@ -17,6 +17,9 @@
         ["name" => "Emily", "language" => "python", "note" => "13"]
     ]);
 
-    dump($list->get("0"));
-    dump($list->get("0")->keys("php"));
-    dump($list->extract("name")->keys("Marc"));
+    dump($list->extract("name"));
+
+    dump($list->extract("name")->deleteFirst());
+    dump($list->extract("name")->deleteLast());
+    dump($list->extract("name")->delete("1"));
+    dump($list->extract("name")->delete("0", "1"));

@@ -257,6 +257,52 @@
 
 
         /**
+         * Delete a given index from an array
+         *
+         * @return array
+         */
+        public function delete (string ...$key) : array
+        {
+            foreach ($key as $v) {
+                if ($this->has($v)) {
+                    unset($this->datas[$v]);
+                } else {
+                    throw new Exception("The '$v' index does not exist in the array");
+                }
+            }
+
+            return $this->datas;
+        }
+
+
+
+        /**
+         * Delete the first index of an array
+         *
+         * @return array
+         */
+        public function deleteFirst () : array
+        {
+            array_shift($this->datas);
+            return $this->datas;
+        }
+
+
+
+        /**
+         * Delete the last index of an array
+         *
+         * @return array
+         */
+        public function deleteLast () : array
+        {
+            array_pop($this->datas);
+            return $this->datas;
+        }
+
+
+
+        /**
          * Check if an offset exists
          *
          * @param mixed $offset

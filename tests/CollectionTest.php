@@ -377,5 +377,59 @@
             $this->assertEquals("Marc, Jean, Emily", $syntaxOne);
             $this->assertEquals("Marc, Jean, Emily", $syntaxTwo);
         }
+
+
+
+        /**
+         * @test
+         */
+        public function testDeleteIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $datas = $this->collection->extract("name")->delete("1", "2");
+
+            $this->assertEquals(["Jean"], $datas);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testDeleteFirstIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $datas = $this->collection->extract("name")->deleteFirst();
+
+            $this->assertEquals(["Marc", "Emily"], $datas);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testDeleteLastIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $datas = $this->collection->extract("name")->deleteLast();
+
+            $this->assertEquals(["Jean", "Marc"], $datas);
+        }
     }
 
