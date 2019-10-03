@@ -305,6 +305,26 @@
         /**
          * @test
          */
+        public function testExtractPortionOfArray() : void
+        {
+            $this->collection = $this->getCollection([
+                "php", "javascript", "python", "html", "css", "java"
+            ]);
+            
+            $testOne = $this->collection->extractPart(2);
+            $testTwo = $this->collection->extractPart(-3, 2);
+            $testThree = $this->collection->extractPart(0, 3);
+            
+            $this->assertEquals(["python", "html", "css", "java"], $testOne);
+            $this->assertEquals(["html", "css"], $testTwo);
+            $this->assertEquals(["php", "javascript", "python"], $testThree);
+        }
+
+
+
+        /**
+         * @test
+         */
         public function testImplodeDatas() : void
         {
             $this->collection = $this->getCollection([

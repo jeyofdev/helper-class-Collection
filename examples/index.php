@@ -12,25 +12,12 @@
 
     // Run the methods of Class 'Collection'
     $list = new jeyofdev\Helper\ManipulateArray\Collection([
-        ["name" => "Jean", "language" => "php", "note" => "11"],
-        ["name" => "Marc", "language" => "javascript", "note" => "8"],
-        ["name" => "Emily", "language" => "python", "note" => "13"]
+        "php", "javascript", "python", "html", "css", "java"
     ]);
 
 
-    function hasTheAverage ($note)
-    {
-        return ($note >= 10) ? $note : null;
-    }
+    dump($list);
 
-
-    function hasNotTheAverage ($note)
-    {
-        return ($note < 10) ? $note : null;
-    }
-
-
-    dump($list->extract("name"));
-
-    dump($list->extract("note")->filter("hasTheAverage"));
-    dump($list->extract("note")->filter("hasNotTheAverage"));
+    dump($list->extractPart(2));
+    dump($list->extractPart(-3, 2));
+    dump($list->extractPart(0, 3));

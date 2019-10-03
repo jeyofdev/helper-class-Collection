@@ -54,9 +54,13 @@
          * @param mixed $value
          * @return self
          */
-        public function set (string $key, $value) : self
+        public function set (?string $key = null, $value) : self
         {
-            $this->datas[$key] = $value;
+            if (is_null($key)) {
+                $this->datas[] = $value;
+            } else {
+                $this->datas[$key] = $value;
+            }
             return $this;
         }
 
@@ -177,6 +181,18 @@
             }
 
             return new Collection($results);
+        }
+
+
+
+        /**
+         * Extract a portion of an array
+         *
+         * @return void
+         */
+        public function extractPart (int $offset, ?int $length = null) : array
+        {
+            return array_slice($this->datas, $offset, $length);
         }
 
 
