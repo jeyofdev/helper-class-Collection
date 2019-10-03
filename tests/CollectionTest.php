@@ -143,6 +143,42 @@
         /**
          * @test
          */
+        public function testGetFirstIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php", "note" => "11"],
+                ["name" => "Marc", "language" => "javascript", "note" => "15"],
+                ["name" => "Emily", "language" => "python", "note" => "13"]
+            ]);
+
+            $key = $this->collection->get("0")->firstKey();
+
+            $this->assertEquals("name", $key);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testGetLastIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php", "note" => "11"],
+                ["name" => "Marc", "language" => "javascript", "note" => "15"],
+                ["name" => "Emily", "language" => "python", "note" => "13"]
+            ]);
+
+            $key = $this->collection->get("0")->lastKey();
+
+            $this->assertEquals("note", $key);
+        }
+
+
+
+        /**
+         * @test
+         */
         public function testIfIndexExist() : void
         {
             $this->collection = $this->getCollection();

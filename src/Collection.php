@@ -80,6 +80,31 @@
 
 
         /**
+         * Get the first index of an array
+         *
+         * @return string|null
+         */
+        public function firstKey () : ?string
+        {
+            return array_key_first($this->datas);
+        }
+
+
+
+        /**
+         * Get the last index of an array
+         *
+         * @return string|null
+         */
+        public function lastKey () : ?string
+        {
+            return array_key_last($this->datas);
+        }
+
+
+
+
+        /**
          * Get the contents of an array
          *
          * @return array
