@@ -34,12 +34,16 @@
         /**
          * Get the value of a given index
          *
-         * @return string|null
+         * @return mixed
          */
-        public function get (string $key)
+        public function get (?string $key = null)
         {
-            $index = explode(".", $key);
-            return $this->getValue($index, $this->datas);
+            if (!is_null($key)) {
+                $index = explode(".", $key);
+                return $this->getValue($index, $this->datas);
+            }
+
+            return array_values($this->datas);
         }
 
 
@@ -54,6 +58,23 @@
         {
             $this->datas[$key] = $value;
             return $this;
+        }
+
+
+
+        /**
+         * Get all indexes or a given index of an array
+         *
+         * @param string|null $value
+         * @return array
+         */
+        public function keys (?string $value = null) : array
+        {
+            if (is_null($value)) {
+                return array_keys($this->datas);
+            }
+
+            return array_keys($this->datas, $value);
         }
 
 

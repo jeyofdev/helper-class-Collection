@@ -89,16 +89,53 @@
         /**
          * @test
          */
-        public function testGetValueOfAnIndex() : void
+        public function testGetAllValues() : void
         {
-            $this->collection = $this->getCollection();
-            $this->datas = $this->collection
-                ->set("username", "john")
-                ->set("job", "dev");
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php", "note" => "11"],
+                ["name" => "Marc", "language" => "javascript", "note" => "15"],
+                ["name" => "Emily", "language" => "python", "note" => "13"]
+            ]);
 
-            $username = $this->collection->get('job');
+            $usernames = $this->collection->get("0")->get();
 
-            $this->assertEquals("dev", $username);
+            $this->assertEquals(["Jean", "php", "11"], $usernames);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testGetIndex() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php", "note" => "11"],
+                ["name" => "Marc", "language" => "javascript", "note" => "15"],
+                ["name" => "Emily", "language" => "python", "note" => "13"]
+            ]);
+
+            $key = $this->collection->get("0")->keys("php");
+
+            $this->assertEquals(["language"], $key);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testGetAllIndexes() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "language" => "php", "note" => "11"],
+                ["name" => "Marc", "language" => "javascript", "note" => "15"],
+                ["name" => "Emily", "language" => "python", "note" => "13"]
+            ]);
+
+            $keys = $this->collection->get("0")->keys();
+
+            $this->assertEquals(["name", "language", "note"], $keys);
         }
 
 
