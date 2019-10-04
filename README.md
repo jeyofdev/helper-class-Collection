@@ -524,6 +524,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     ["name" => "Emily", "note" => 13]
 ]);
 
+$datas = $collection->extract("note");
 $collection->extract("note")->filter(function ($datas) {
     return ($datas >= 10) ? $datas : null;
 });

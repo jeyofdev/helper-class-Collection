@@ -311,9 +311,9 @@
                 "php", "javascript", "python", "html", "css", "java"
             ]);
             
-            $testOne = $this->collection->extractPart(2);
-            $testTwo = $this->collection->extractPart(-3, 2);
-            $testThree = $this->collection->extractPart(0, 3);
+            $testOne = $this->collection->extractPart(2)->getDatas();
+            $testTwo = $this->collection->extractPart(-3, 2)->getDatas();
+            $testThree = $this->collection->extractPart(0, 3)->getDatas();
             
             $this->assertEquals(["python", "html", "css", "java"], $testOne);
             $this->assertEquals(["html", "css"], $testTwo);
@@ -431,7 +431,7 @@
                 ["name" => "Emily", "note" => 13]
             ]);
             
-            $datas = $this->collection->extract("name")->delete("1", "2");
+            $datas = $this->collection->extract("name")->delete("1", "2")->getDatas();
 
             $this->assertEquals(["Jean"], $datas);
         }
@@ -449,7 +449,7 @@
                 ["name" => "Emily", "note" => 13]
             ]);
             
-            $datas = $this->collection->extract("name")->deleteFirst();
+            $datas = $this->collection->extract("name")->deleteFirst()->getDatas();
 
             $this->assertEquals(["Marc", "Emily"], $datas);
         }
@@ -467,7 +467,7 @@
                 ["name" => "Emily", "note" => 13]
             ]);
             
-            $datas = $this->collection->extract("name")->deleteLast();
+            $datas = $this->collection->extract("name")->deleteLast()->getDatas();
 
             $this->assertEquals(["Jean", "Marc"], $datas);
         }
@@ -485,7 +485,7 @@
                 ["name" => "Emily", "note" => 13]
             ]);
             
-            $datas = $this->collection->extract("name")->empty();
+            $datas = $this->collection->extract("name")->empty()->getDatas();
 
             $this->assertEmpty($datas);
         }
@@ -503,7 +503,7 @@
                 ["name" => "Emily", "note" => 13]
             ]);
             
-            $datas = $this->collection->extract("name")->reverse();
+            $datas = $this->collection->extract("name")->reverse()->getDatas();
 
             $this->assertEquals(["Emily", "Marc", "Jean"], $datas);
         }
@@ -521,8 +521,8 @@
                 ["name" => "Emily", "note" => 13]
             ]);
             
-            $start = $this->collection->extract("name")->add("start", "John", "Maria");
-            $end = $this->collection->extract("name")->add("end", "John", "Maria");
+            $start = $this->collection->extract("name")->add("start", "John", "Maria")->getDatas();
+            $end = $this->collection->extract("name")->add("end", "John", "Maria")->getDatas();
 
             $this->assertEquals(["John", "Maria", "Jean", "Marc", "Emily"], $start);
             $this->assertEquals(["Jean", "Marc", "Emily", "John", "Maria"], $end);
@@ -545,7 +545,7 @@
             
             $names = $this->collection->extract("name")->map(function ($datas) {
                 return strtoupper($datas);
-            });
+            })->getDatas();
 
             $this->assertEquals(["JEAN", "MARC", "EMILY"], $names);
         }
@@ -567,7 +567,7 @@
             
             $average = $this->collection->extract("note")->filter(function ($datas) {
                 return ($datas >= 10) ? $datas : null;
-            });
+            })->getDatas();
 
             $this->assertEquals(["0" => 11, "2" => 13], $average);
         }

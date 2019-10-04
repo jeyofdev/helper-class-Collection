@@ -188,11 +188,12 @@
         /**
          * Extract a portion of an array
          *
-         * @return void
+         * @return Collection
          */
-        public function extractPart (int $offset, ?int $length = null) : array
+        public function extractPart (int $offset, ?int $length = null) : Collection
         {
-            return array_slice($this->datas, $offset, $length);
+            $results = array_slice($this->datas, $offset, $length);
+            return new Collection($results);
         }
 
 
@@ -288,9 +289,9 @@
         /**
          * Delete a given index from an array
          *
-         * @return array
+         * @return Collection
          */
-        public function delete (string ...$key) : array
+        public function delete (string ...$key) : Collection
         {
             foreach ($key as $v) {
                 if ($this->has($v)) {
@@ -300,7 +301,7 @@
                 }
             }
 
-            return $this->datas;
+            return new Collection($this->datas);
         }
 
 
@@ -308,12 +309,12 @@
         /**
          * Delete the first index of an array
          *
-         * @return array
+         * @return Collection
          */
-        public function deleteFirst () : array
+        public function deleteFirst () : Collection
         {
             array_shift($this->datas);
-            return $this->datas;
+            return new Collection($this->datas);
         }
 
 
@@ -321,12 +322,12 @@
         /**
          * Delete the last index of an array
          *
-         * @return array
+         * @return Collection
          */
-        public function deleteLast () : array
+        public function deleteLast () : Collection
         {
             array_pop($this->datas);
-            return $this->datas;
+            return new Collection($this->datas);
         }
 
 
@@ -334,12 +335,11 @@
         /**
          * Empty the contents of an array
          *
-         * @return array
+         * @return Collection
          */
-        public function empty () : array
+        public function empty () : Collection
         {
-            $this->datas = [];
-            return $this->datas;
+            return new Collection();
         }
 
 
@@ -347,11 +347,12 @@
         /**
          * Reverse the order of the elements of an array
          *
-         * @return array
+         * @return collection
          */
-        public function reverse () : array
+        public function reverse () : collection
         {
-            return array_reverse($this->datas);
+            $results = array_reverse($this->datas);
+            return new Collection($results);
         }
 
 
@@ -359,18 +360,20 @@
         /**
          * Add elements to an array
          *
-         * @return array
+         * @return Collection
          */
-        public function add (string $position, string ...$value) : array
+        public function add (string $position, string ...$value) : Collection
         {
             if ($position === "start") {
-                return array_merge($value, $this->datas);
+                $results = array_merge($value, $this->datas);
             } else if ($position === "end") {
-                return array_merge($this->datas, $value);
+                $results = array_merge($this->datas, $value);
             } else {
                 $paramsAllowed = implode(" or ", ["start", "end"]);
                 throw new Exception("The value of the 1st parameter is not allowed. Its value is " . $paramsAllowed);
             }
+
+            return new Collection($results);
         }
 
 
@@ -378,11 +381,12 @@
         /**
          * Execute a callback on the values of an array
          *
-         * @return array
+         * @return Collection
          */
-        public function map (callable $callback) : array
+        public function map (callable $callback) : Collection
         {
-            return array_map($callback, $this->datas);
+            $results = array_map($callback, $this->datas);
+            return new Collection($results);
         }
 
 
@@ -390,11 +394,12 @@
         /**
          * Filter the elements of an array
          * 
-         * @return array
+         * @return Collection
          */
-        public function filter (callable $callback) : array
+        public function filter (callable $callback) : Collection
         {
-            return array_filter($this->datas, $callback);
+            $results = array_filter($this->datas, $callback);
+            return new Collection($results);
         }
 
 
