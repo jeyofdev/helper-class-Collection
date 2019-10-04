@@ -24,7 +24,7 @@
         /**
          * @param array $datas
          */
-        public function __construct (array $datas)
+        public function __construct (array $datas = [])
         {
             $this->datas = $datas;
         }
@@ -332,6 +332,19 @@
 
 
         /**
+         * Empty the contents of an array
+         *
+         * @return array
+         */
+        public function empty () : array
+        {
+            $this->datas = [];
+            return $this->datas;
+        }
+
+
+
+        /**
          * Reverse the order of the elements of an array
          *
          * @return array
@@ -375,7 +388,7 @@
 
 
         /**
-         * Filter the elements of an array with a callback
+         * Filter the elements of an array
          * 
          * @return array
          */

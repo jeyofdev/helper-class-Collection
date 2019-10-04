@@ -196,6 +196,23 @@
         /**
          * @test
          */
+        public function testIfIndexNotExist() : void
+        {
+            $this->collection = $this->getCollection();
+            $this->datas = $this->collection
+                ->set("username", "john")
+                ->set("job", "dev");
+
+            $exist = $this->collection->has("lastname");
+
+            $this->assertFalse($exist);
+        }
+
+
+
+        /**
+         * @test
+         */
         public function testCheckIfValueExist() : void
         {
             $this->collection = $this->getCollection([
@@ -209,23 +226,6 @@
 
             $this->assertNotFalse($true);
             $this->assertFalse($false);
-        }
-
-
-
-        /**
-         * @test
-         */
-        public function testIfIndexNotExist() : void
-        {
-            $this->collection = $this->getCollection();
-            $this->datas = $this->collection
-                ->set("username", "john")
-                ->set("job", "dev");
-
-            $exist = $this->collection->has("lastname");
-
-            $this->assertFalse($exist);
         }
 
 
@@ -470,6 +470,24 @@
             $datas = $this->collection->extract("name")->deleteLast();
 
             $this->assertEquals(["Jean", "Marc"], $datas);
+        }
+
+
+
+        /**
+         * @test
+         */
+        public function testEmptyArray() : void
+        {
+            $this->collection = $this->getCollection([
+                ["name" => "Jean", "note" => 11],
+                ["name" => "Marc", "note" => 15],
+                ["name" => "Emily", "note" => 13]
+            ]);
+            
+            $datas = $this->collection->extract("name")->empty();
+
+            $this->assertEmpty($datas);
         }
 
 
