@@ -1,4 +1,4 @@
-# A simple class that allows to manipulate array
+# A class that allows to manipulate an array simply
 
 <a name="index_block"></a>
 
@@ -283,7 +283,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     ["name" => "Emily", "note" => "13"]
 ]);
 
-$collection->lists("name", "note"); // return ["Jean" => "11", "Marc" => "15", "Emily" => "13"]
+$collection->lists("name", "note")->getDatas(); // return ["Jean" => "11", "Marc" => "15", "Emily" => "13"]
 ```
 
 
@@ -298,7 +298,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     ["name" => "Emily", "note" => "13"]
 ]);
 
-$collection->extract("name"); // return [0 => "Jean", 1 => "Marc", 2 => "Emily"]
+$collection->extract("name")->getDatas(); // return [0 => "Jean", 1 => "Marc", 2 => "Emily"]
 ```
 
 
@@ -311,9 +311,9 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "php", "javascript", "python", "html", "css", "java"
 ]);
 
-$collection->extractPart(2); // return [0 => "python", 1 => "html", 2 => "css", 3 => "java"]
-$collection->extractPart(-3, 2);  // return [0 => "html", 1 => "css"]
-$collection->extractPart(0, 3); // return [0 => "php", 1 => "javascript", 2 => "python"]
+$collection->extractPart(2)->getDatas(); // return [0 => "python", 1 => "html", 2 => "css", 3 => "java"]
+$collection->extractPart(-3, 2)->getDatas();  // return [0 => "html", 1 => "css"]
+$collection->extractPart(0, 3)->getDatas(); // return [0 => "php", 1 => "javascript", 2 => "python"]
 ```
 
 
@@ -363,7 +363,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     ["name" => "Emily", "note" => 13]
 ]);
 
-$collection->extract("name")->join(", ")); // return "Jean, Marc, Emily"
+$collection->extract("name")->join(", "))->getDatas(); // return "Jean, Marc, Emily"
 ```
 
 
@@ -424,7 +424,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "Jean", "Marc", "Emily", "John"
 ]);
 
-$collection->delete("1", "2"); // return [0 => "Jean", 3 => "John"]
+$collection->delete("1", "2")->getDatas(); // return [0 => "Jean", 3 => "John"]
 ```
 
 
@@ -437,7 +437,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "Jean", "Marc", "Emily", "John"
 ]);
 
-$collection->deleteFirst(); // return [0 => "Marc", 1 => "Emily", 2 => "John"]
+$collection->deleteFirst()->getDatas(); // return [0 => "Marc", 1 => "Emily", 2 => "John"]
 ```
 
 
@@ -450,7 +450,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "Jean", "Marc", "Emily", "John"
 ]);
 
-$collection->deleteLast(); // return [0 => "Jean", 1 => "Marc", 2 => "Emily"]
+$collection->deleteLast()->getDatas(); // return [0 => "Jean", 1 => "Marc", 2 => "Emily"]
 ```
 
 
@@ -463,7 +463,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "Jean", "Marc", "Emily", "John"
 ]);
 
-$collection->empty(); // return []
+$collection->empty()->getDatas(); // return []
 ```
 
 <a name="block12"></a>
@@ -475,7 +475,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "Jean", "Marc", "Emily", "John"
 ]);
 
-$collection->reverse(); // return [0 => "John", 1 => "Emily", 2 => "Marc", 3 => "Jean"]
+$collection->reverse()->getDatas(); // return [0 => "John", 1 => "Emily", 2 => "Marc", 3 => "Jean"]
 ```
 
 
@@ -489,8 +489,8 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
     "Jean", "John"
 ]);
 
-$collection->add("start", "Marc", "Emily"); // return [0 => "Marc", 1 => "Emily", 2 => "Jean", 3 => "John"]
-$collection->add("end", "Marc", "Emily"); // return [0 => "Jean", 1 => "John", 2 => "Marc", 3 => "Emily"]
+$collection->add("start", "Marc", "Emily")->getDatas(); // return [0 => "Marc", 1 => "Emily", 2 => "Jean", 3 => "John"]
+$collection->add("end", "Marc", "Emily")->getDatas(); // return [0 => "Jean", 1 => "John", 2 => "Marc", 3 => "Emily"]
 ```
 
 
@@ -506,7 +506,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
 
 $collection->map(function ($datas) {
     return strtoupper($datas);
-});
+})->getDatas();
 
 // return [0 => "JEAN", 1 => "MARC", 2 => "EMILY", 3 => "JOHN"]
 ```
@@ -527,7 +527,7 @@ $collection = new jeyofdev\Helper\ManipulateArray\Collection([
 $datas = $collection->extract("note");
 $collection->extract("note")->filter(function ($datas) {
     return ($datas >= 10) ? $datas : null;
-});
+})->getDatas();
 
 // return [0 => 11, 2 => 13]
 ```
